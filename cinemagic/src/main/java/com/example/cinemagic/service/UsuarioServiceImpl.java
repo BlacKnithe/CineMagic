@@ -15,21 +15,25 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    // Obtener todos los usuarios
     @Override
     public List<Usuario> getAllUsuarios() {
         return usuarioRepository.findAll();
     }
 
+    // Obtener un usuario por ID
     @Override
     public Optional<Usuario> getUsuarioById(Long id) {
         return usuarioRepository.findById(id);
     }
 
+    // Guardar un nuevo usuario
     @Override
     public Usuario saveUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
 
+    // Actualizar un usuario existente
     @Override
     public Usuario updateUsuario(Long id, Usuario usuarioDetails) {
         return usuarioRepository.findById(id).map(usuario -> {
@@ -44,6 +48,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         });
     }
 
+    // Eliminar un usuario por ID
     @Override
     public boolean deleteUsuario(Long id) {
         return usuarioRepository.findById(id).map(usuario -> {
